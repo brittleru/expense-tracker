@@ -7,14 +7,16 @@ const text = document.getElementById("text");
 const amount = document.getElementById("amount");
 
 
-const minusTransactions = [
-  { id: 1, text: "Flower", amount: -20},
-  { id: 2, text: "Salary", amount: 300},
-  { id: 3, text: "Book", amount: -10},
-  { id: 4, text: "Camera", amount: 150}
-];
+// const minusTransactions = [
+//   { id: 1, text: "Flower", amount: -20},
+//   { id: 2, text: "Salary", amount: 300},
+//   { id: 3, text: "Book", amount: -10},
+//   { id: 4, text: "Camera", amount: 150}
+// ];
 
-let transactions = minusTransactions;
+const localStorageTransaction = JSON.parse(localStorage.getItem("transactions"));
+
+let transactions = localStorage.getItem("transactions") !== null ? localStorageTransaction : [];
 
 // Add transaction
 function addTransaction(e) {
@@ -33,6 +35,7 @@ function addTransaction(e) {
     transactions.push(transaction);
     addTransactionDOM(transaction);
     updateValues();
+    updateLocalStorage();
 
     text.value = "";
     amount.value = "";
@@ -77,7 +80,13 @@ function updateValues() {
 function removeTransaction(id) {
   transactions = transactions.filter(transaction => transaction.id !== id);
 
+  updateLocalStorage();
   init();
+}
+
+// Update local storage transactions
+function updateLocalStorage() {
+  localStorage.setItem("transactions", JSON.stringify(transactions));
 }
 
 // Init app
@@ -89,7 +98,7 @@ function init() {
 
 init();
 
-
+// Event listeners
 form.addEventListener("submit", addTransaction);
 
 
