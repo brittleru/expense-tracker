@@ -101,20 +101,3 @@ init();
 // Event listeners
 form.addEventListener("submit", addTransaction);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
