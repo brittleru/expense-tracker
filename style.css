@@ -94,13 +94,13 @@ input[type="text"]:focus, input[type="number"]:focus {
 }
 
 .btn {
-  background-color: #9c88ff;
+  background-color: #133b5c;
   box-shadow: var(--box-shadow);
-  color: black;
+  color: #EEEEEE;
   border: 0;
   display: block;
   font-size: 16px;
-  margin: 10px 0 30px;
+  margin: 20px 0 30px;
   padding: 10px;
   width: 100%;
   cursor: pointer;
